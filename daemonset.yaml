@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata: 
+  name: daemonset
+  namespace: my-sql
+spec:
+  selector:
+    matchLabels:
+      app: demo
+  template:
+    metadata: 
+      name: daemon-pod
+      labels:
+        app: demo
+    spec:
+      containers:
+        - name: cont-1
+          image: nginx
+          ports:
+             - containerPort: 80
